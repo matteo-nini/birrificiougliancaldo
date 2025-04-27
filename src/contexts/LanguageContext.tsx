@@ -91,8 +91,8 @@ const translations = {
     // Footer
     'footer.rights': 'All Rights Reserved',
     'footer.address': 'Ugliancaldo, Tuscany, Italy',
-    'footer.phone': '+39 0123 456789',
-    'footer.email': 'info@birrificiougliancaldo.it',
+    'footer.phone': '+39 388 8490145',
+    'footer.email': 'birrificiougliancaldo@gmail.com',
     
     // Misc
     'readMore': 'Read More',
@@ -184,8 +184,8 @@ const translations = {
     // Footer
     'footer.rights': 'Tutti i Diritti Riservati',
     'footer.address': 'Ugliancaldo, Toscana, Italia',
-    'footer.phone': '+39 0123 456789',
-    'footer.email': 'info@birrificiougliancaldo.it',
+    'footer.phone': '+39 388 8490145',
+    'footer.email': 'birrificiougliancaldo@gmail.com',
     
     // Misc
     'readMore': 'Leggi di Più',
@@ -198,7 +198,7 @@ const translations = {
 };
 
 const LanguageContext = createContext<LanguageContextType>({
-  language: 'en',
+  language: 'it',
   setLanguage: () => {},
   t: () => '',
 });
@@ -206,7 +206,7 @@ const LanguageContext = createContext<LanguageContextType>({
 export const useLanguage = () => useContext(LanguageContext);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('it');
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;

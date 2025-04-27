@@ -100,6 +100,6 @@ Questo progetto è distribuito con licenza [CC0](LICENSE).
 ## 👥 Contatti
 
 Per qualsiasi domanda o informazione, contattare:
-- Email: info@birrificiougliancaldo.it
+- Email: birrificiougliancaldo@gmail.com
 - Sito web: [www.birrificiougliancaldo.it](https://www.birrificiougliancaldo.it)
 - Social: [Instagram](https://instagram.com/birrificiougliancaldo) | [Facebook](https://facebook.com/birrificiougliancaldo)
