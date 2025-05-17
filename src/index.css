@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Definizione del font personalizzato - spostata fuori da @layer base */
+@font-face {
+    font-family: 'BirrificioBrand';
+    src: url('/fonts/BirrificioBrand.woff2') format('woff2'),
+        url('/fonts/BirrificioBrand.woff') format('woff'),
+        url('/fonts/BirrificioBrand.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Aggiungiamo una classe CSS esplicita come backup */
+.brand-font {
+    font-family: 'BirrificioBrand', serif;
+}
+
+/* Per retrocompatibilità, font-brand sarà supportata tramite Tailwind */

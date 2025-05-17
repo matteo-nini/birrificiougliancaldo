@@ -5,6 +5,7 @@ type Language = 'en' | 'it';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  changeLanguage: (lang: Language) => void;
   t: (key: string) => string;
 }
 
@@ -200,6 +201,7 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType>({
   language: 'it',
   setLanguage: () => {},
+  changeLanguage: () => {},
   t: () => '',
 });
 
@@ -212,8 +214,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;
   };
 
+  // Aggiungiamo changeLanguage come alias per setLanguage per compatibilità
+  const changeLanguage = setLanguage;
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, changeLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

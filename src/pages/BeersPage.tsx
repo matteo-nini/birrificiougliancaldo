@@ -29,7 +29,7 @@ const BeersPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-4xl md:text-5xl font-bold mb-4"
+            className="font-brand text-4xl md:text-5xl font-bold mb-4"
           >
             {t('beers.title')}
           </motion.h1>
@@ -37,7 +37,7 @@ const BeersPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-neutral-300 max-w-2xl mx-auto"
+            className="font-brand text-xl text-neutral-300 max-w-2xl mx-auto"
           >
             {t('beers.subtitle')}
           </motion.p>
@@ -45,7 +45,7 @@ const BeersPage = () => {
       </section>
       
       {/* Beers Section */}
-      <Section className="bg-white">
+      <Section title={t('beers.title')} className="bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {beers.map((beer) => (
             <BeerCard

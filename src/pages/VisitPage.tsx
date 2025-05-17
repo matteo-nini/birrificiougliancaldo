@@ -35,7 +35,7 @@ const VisitPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-4xl md:text-5xl font-bold mb-4"
+            className="font-brand text-4xl md:text-5xl font-bold mb-4"
           >
             {t('visit.title')}
           </motion.h1>
@@ -43,7 +43,7 @@ const VisitPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-neutral-300 max-w-2xl mx-auto"
+            className="font-brand text-xl text-neutral-300 max-w-2xl mx-auto"
           >
             {t('visit.subtitle')}
           </motion.p>
@@ -65,7 +65,7 @@ const VisitPage = () => {
             <div className="flex items-start gap-3 mb-6">
               <MapPin size={24} className="text-primary-500 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-serif text-xl font-bold mb-2">Birrificio Ugliancaldo</h3>
+                <h3 className="font-brand text-xl font-bold mb-2">Birrificio Ugliancaldo</h3>
                 <p className="text-neutral-700">
                   {t('visit.location.address')}
                 </p>
@@ -79,7 +79,7 @@ const VisitPage = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-serif text-2xl font-bold mb-4">{t('visit.trails.title')}</h3>
+            <h3 className="font-brand text-2xl font-bold mb-4">{t('visit.trails.title')}</h3>
             <p className="text-neutral-700 mb-6">
               {t('visit.trails.text')}
             </p>
@@ -89,7 +89,7 @@ const VisitPage = () => {
       </Section>
       
       {/* Hours & Contact Section */}
-      <Section className="bg-neutral-50">
+      <Section title={t('visit.hours.title')} className="bg-neutral-50">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -100,7 +100,7 @@ const VisitPage = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <Clock size={24} className="text-primary-500" />
-              <h3 className="font-serif text-2xl font-bold">{t('visit.hours.title')}</h3>
+              <h3 className="font-brand text-2xl font-bold">{t('visit.hours.title')}</h3>
             </div>
             <ul className="space-y-4 text-lg">
               <li className="pb-4 border-b border-neutral-100">
@@ -118,7 +118,7 @@ const VisitPage = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="font-serif text-2xl font-bold mb-6">{t('visit.contact.title')}</h3>
+            <h3 className="font-brand text-2xl font-bold mb-6">{t('visit.contact.title')}</h3>
             <ContactForm />
           </motion.div>
         </div>

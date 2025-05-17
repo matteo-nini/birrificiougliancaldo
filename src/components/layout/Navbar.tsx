@@ -1,166 +1,158 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Beer, Menu, X, Globe } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
-  const { t, language, setLanguage } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { language, changeLanguage } = useLanguage();
+  const location = useLocation();
 
-  const toggleNav = () => setIsOpen(!isOpen);
-  const toggleLangMenu = () => setIsLangMenuOpen(!isLangMenuOpen);
+  // Gestione dello scroll per cambiare lo stile della navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-  const closeNav = () => {
-    setIsOpen(false);
-    setIsLangMenuOpen(false);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Toggle del menu mobile
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
+  // Cambio della lingua
+  const handleLanguageChange = (lang: 'it' | 'en') => {
+    changeLanguage(lang);
+  };
+
+  // Collegamenti della navbar - testi hardcoded temporaneamente per debugging
   const navLinks = [
-    { to: '/', label: t('nav.home') },
-    { to: '/beers', label: t('nav.beers') },
-    { to: '/about', label: t('nav.about') },
-    { to: '/visit', label: t('nav.visit') },
+    { path: '/', label: 'Home' },
+    { path: '/beers', label: 'Le nostre birre' },
+    { path: '/about', label: 'Chi siamo' },
+    { path: '/visit', label: 'Visita' }
   ];
 
   return (
-    <header className="fixed w-full z-50 bg-gradient-to-b from-neutral-900/80 to-transparent backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2" onClick={closeNav}>
-            <Beer size={28} className="text-primary-500" />
-            <span className="font-serif text-xl font-bold text-white">Birrificio Ugliancaldo</span>
-          </Link>
-          
-          <nav className="hidden md:flex items-center gap-8">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-amber-900/90 backdrop-blur-sm shadow-lg py-2' : 'bg-transparent py-4'
+      }`}
+    >
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Logo con testo brand */}
+        <Link to="/" className="flex items-center gap-3">
+          <img 
+            src="/logo-birrificio-ugliancaldo.png" 
+            alt="Logo Birrificio Ugliancaldo" 
+            className="h-12 md:h-14"
+          />
+          <span className="font-brand text-2xl md:text-3xl text-white tracking-wide">Ugliancaldo</span>
+        </Link>
+
+        {/* Menu su desktop con classe nav-link */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.path}
+              to={link.path} 
+              className={`nav-link text-lg ${
+                location.pathname === link.path 
+                  ? 'text-amber-200 font-semibold' 
+                  : 'text-white hover:text-amber-200 transition-colors'
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="flex space-x-2 ml-4">
+            <button
+              onClick={() => handleLanguageChange('it')}
+              className={`${
+                language === 'it' ? 'font-bold text-amber-200' : 'text-white opacity-70'
+              } hover:text-amber-200 transition-colors`}
+            >
+              IT
+            </button>
+            <span className="text-white">|</span>
+            <button
+              onClick={() => handleLanguageChange('en')}
+              className={`${
+                language === 'en' ? 'font-bold text-amber-200' : 'text-white opacity-70'
+              } hover:text-amber-200 transition-colors`}
+            >
+              EN
+            </button>
+          </div>
+        </nav>
+
+        {/* Menu mobile toggle */}
+        <button 
+          className="md:hidden text-white p-2" 
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        >
+          {isMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </button>
+      </div>
+
+      {/* Menu mobile con classe nav-link */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-amber-900 shadow-lg">
+          <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  `font-medium transition-colors duration-300 hover:text-primary-500 ${
-                    isActive ? 'text-primary-500' : 'text-white'
-                  }`
-                }
+              <Link 
+                key={link.path}
+                to={link.path} 
+                className={`nav-link text-lg ${
+                  location.pathname === link.path 
+                    ? 'text-amber-200 font-semibold' 
+                    : 'text-white hover:text-amber-200'
+                }`}
+                onClick={toggleMenu}
               >
                 {link.label}
-              </NavLink>
+              </Link>
             ))}
-            
-            <div className="relative">
+            <div className="flex space-x-4 pt-2">
               <button
-                onClick={toggleLangMenu}
-                className="flex items-center gap-1 text-white hover:text-primary-500 transition-colors duration-300"
+                onClick={() => {
+                  handleLanguageChange('it');
+                  toggleMenu();
+                }}
+                className={`${
+                  language === 'it' ? 'font-bold text-amber-200' : 'text-white'
+                }`}
               >
-                <Globe size={18} />
-                <span>{language.toUpperCase()}</span>
+                Italiano
               </button>
-              
-              <AnimatePresence>
-                {isLangMenuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-md overflow-hidden"
-                  >
-                    <div className="py-1">
-                      <button
-                        onClick={() => {
-                          setLanguage('en');
-                          toggleLangMenu();
-                        }}
-                        className={`block w-full text-left px-4 py-2 text-sm ${
-                          language === 'en' ? 'bg-primary-100 text-primary-800' : 'text-neutral-800 hover:bg-neutral-100'
-                        }`}
-                      >
-                        {t('english')}
-                      </button>
-                      <button
-                        onClick={() => {
-                          setLanguage('it');
-                          toggleLangMenu();
-                        }}
-                        className={`block w-full text-left px-4 py-2 text-sm ${
-                          language === 'it' ? 'bg-primary-100 text-primary-800' : 'text-neutral-800 hover:bg-neutral-100'
-                        }`}
-                      >
-                        {t('italian')}
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <button
+                onClick={() => {
+                  handleLanguageChange('en');
+                  toggleMenu();
+                }}
+                className={`${
+                  language === 'en' ? 'font-bold text-amber-200' : 'text-white'
+                }`}
+              >
+                English
+              </button>
             </div>
           </nav>
-          
-          <button
-            onClick={toggleNav}
-            className="flex md:hidden text-white focus:outline-none"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-      </div>
-      
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-neutral-900/95 backdrop-blur-sm"
-          >
-            <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  onClick={closeNav}
-                  className={({ isActive }) =>
-                    `font-medium py-2 transition-colors duration-300 hover:text-primary-500 ${
-                      isActive ? 'text-primary-500' : 'text-white'
-                    }`
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              ))}
-              
-              <div className="border-t border-neutral-700 pt-4 mt-2">
-                <span className="text-white text-sm mb-2 block">{t('language')}</span>
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => {
-                      setLanguage('en');
-                      closeNav();
-                    }}
-                    className={`text-sm ${
-                      language === 'en' ? 'text-primary-500 font-medium' : 'text-white'
-                    }`}
-                  >
-                    {t('english')}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setLanguage('it');
-                      closeNav();
-                    }}
-                    className={`text-sm ${
-                      language === 'it' ? 'text-primary-500 font-medium' : 'text-white'
-                    }`}
-                  >
-                    {t('italian')}
-                  </button>
-                </div>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      )}
     </header>
   );
 };

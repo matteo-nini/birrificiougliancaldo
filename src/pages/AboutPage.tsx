@@ -30,7 +30,7 @@ const AboutPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-4xl md:text-5xl font-bold mb-4"
+            className="font-brand text-4xl md:text-5xl font-bold mb-4"
           >
             {t('about.title')}
           </motion.h1>
@@ -38,7 +38,7 @@ const AboutPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl max-w-2xl"
+            className="font-brand text-xl max-w-2xl"
           >
             {t('about.subtitle')}
           </motion.p>

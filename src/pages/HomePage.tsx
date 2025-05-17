@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import Section from '../components/ui/Section';
 import Button from '../components/ui/Button';
-import BeerCard from '../components/ui/BeerCard';
 import MapComponent from '../components/ui/MapComponent';
 import { beers } from '../data/beers';
 
@@ -27,32 +26,32 @@ const HomePage = () => {
       </Helmet>
       
       {/* Hero Section */}
-      <section className="relative h-screen">
-        <div className="absolute inset-0 bg-hero-pattern bg-cover bg-center before:absolute before:inset-0 before:bg-black before:opacity-50"></div>
+      <section className="relative h-screen bg-hero-pattern bg-cover bg-center">
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative h-full flex flex-col items-center justify-center text-white px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-serif text-4xl md:text-6xl font-bold mb-4 max-w-4xl"
+            transition={{ duration: 0.8 }}
+            className="font-brand text-4xl md:text-6xl lg:text-7xl font-bold mb-4 max-w-4xl"
           >
-            {t('home.hero.title')}
+            Birrificio Ugliancaldo
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl mb-8 max-w-2xl"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="font-brand text-xl md:text-2xl mb-8 max-w-2xl"
           >
-            {t('home.hero.subtitle')}
+            Birre artigianali dal cuore delle Alpi Apuane
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Button to="/beers" size="lg" variant="primary">
-              {t('home.cta')}
+            <Button to="/beers" size="lg" variant="primary" className="font-brand text-lg">
+              Scopri le nostre birre
             </Button>
           </motion.div>
         </div>

@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        'brand': ['BirrificioBrand', 'serif'],
+      },
       colors: {
         primary: {
           50: '#fef3f2',
@@ -69,14 +72,29 @@ export default {
           900: '#1c1917',
           950: '#0c0a09',
         },
+        amber: {
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
+        },
       },
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
         sans: ['Inter', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
+        inter: ['Inter', 'sans-serif'],
+        brand: ['BirrificioBrand', 'serif'], // Font personalizzato per il brand
       },
       backgroundImage: {
-        'hero-pattern': "url('https://images.pexels.com/photos/159291/beer-machine-alcohol-brewery-159291.jpeg')",
-        'about-pattern': "url('https://images.pexels.com/photos/5490965/pexels-photo-5490965.jpeg')",
+        'hero-pattern': "url('/homepage-hero.jpeg')",
+        'about-pattern': "url('https://scontent-fco2-1.xx.fbcdn.net/v/t1.6435-9/117035440_102747608208138_8642301912861955642_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=LlwXRZCeWOUQ7kNvwGOe5wg&_nc_oc=AdnWXEdadvfnOW55kqrZ4g9I4-OIINDVJ43jTxxVlahgalkUpZT48S_c5Y8v8T5f4kc&_nc_zt=23&_nc_ht=scontent-fco2-1.xx&_nc_gid=ObIEUOJpFNINnBk3IIUpnQ&oh=00_AfFxzApjKVNXoKtnoFMKB4fH7POqRipTW5yvMM8G9jy_Sg&oe=6835BF8F')",
       },
     },
   },

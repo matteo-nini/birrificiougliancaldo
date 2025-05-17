@@ -14,7 +14,7 @@ const Footer = () => {
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
               <Beer size={24} className="text-primary-500" />
-              <span className="font-serif text-xl font-bold">Birrificio Ugliancaldo</span>
+              <span className="font-brand text-xl font-bold">Birrificio Ugliancaldo</span>
             </Link>
             <p className="text-neutral-400 text-sm mb-4">
               Craft brewery located in the beautiful Apuane Park, producing artisanal beers with local ingredients and traditional methods.
@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-serif text-lg font-medium mb-4">Quick Links</h3>
+            <h3 className="font-brand text-lg font-medium mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/" className="text-neutral-400 hover:text-primary-500 transition-colors duration-300">

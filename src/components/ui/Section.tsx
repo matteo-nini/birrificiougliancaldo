@@ -20,8 +20,8 @@ const Section = ({ id, title, subtitle, className = '', children }: SectionProps
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <h2 className="font-serif text-3xl md:text-4xl font-bold mb-3">{title}</h2>
-          {subtitle && <p className="text-neutral-600 max-w-2xl mx-auto">{subtitle}</p>}
+          <h2 className="font-brand text-3xl md:text-4xl font-bold mb-3">{title}</h2>
+          {subtitle && <p className="font-brand text-neutral-600 max-w-2xl mx-auto">{subtitle}</p>}
         </motion.div>
         {children}
       </div>

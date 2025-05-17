@@ -1,17 +1,46 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Birrificio Ugliancaldo | Craft Brewery</title>
-    <meta name="description" content="Craft brewery located in the beautiful Apuane Park, producing artisanal beers with local ingredients and traditional methods." />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Caricamento diretto del font personalizzato - percorso aggiornato -->
+  <style>
+    @font-face {
+      font-family: 'BirrificioBrand';
+      src: url('./BirrificioBrand.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Classe di fallback esplicita per il font */
+    .brand-font {
+      font-family: 'BirrificioBrand', serif !important;
+    }
+
+    /* Classe per i link nella navbar con font personalizzato */
+    .nav-link {
+      font-family: 'BirrificioBrand', serif !important;
+      letter-spacing: 0.05em;
+    }
+  </style>
+
+  <title>Birrificio Ugliancaldo | Craft Brewery</title>
+  <meta name="description"
+    content="Craft brewery located in the beautiful Apuane Park, producing artisanal beers with local ingredients and traditional methods." />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

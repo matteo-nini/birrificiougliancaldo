@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useLanguage } from '../../contexts/LanguageContext';
 
 interface BeerCardProps {
   id: string;
@@ -26,7 +25,6 @@ const BeerCard = ({
   color,
   className = '',
 }: BeerCardProps) => {
-  const { t } = useLanguage();
   
   return (
     <motion.div
@@ -46,8 +44,8 @@ const BeerCard = ({
       </div>
       
       <div className="p-6">
-        <h3 className="font-serif text-2xl font-bold mb-1">{name}</h3>
-        <p className="text-neutral-600 mb-4">{type}</p>
+        <h3 className="font-brand text-2xl font-bold mb-1">{name}</h3>
+        <p className="font-brand text-neutral-600 mb-4">{type}</p>
         
         <div className="mb-4">
           <p className="text-neutral-700 mb-3">{description}</p>
