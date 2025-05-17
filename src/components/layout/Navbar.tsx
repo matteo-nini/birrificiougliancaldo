@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-amber-900/90 backdrop-blur-sm shadow-lg py-2' : 'bg-transparent py-4'
+        isScrolled ? 'bg-[rgb(57,109,59)]/90 backdrop-blur-sm shadow-lg py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -66,8 +66,8 @@ const Navbar = () => {
               to={link.path} 
               className={`nav-link text-lg ${
                 location.pathname === link.path 
-                  ? 'text-amber-200 font-semibold' 
-                  : 'text-white hover:text-amber-200 transition-colors'
+                  ? 'text-green-200 font-semibold' 
+                  : 'text-white hover:text-green-200 transition-colors'
               }`}
             >
               {link.label}
@@ -77,8 +77,8 @@ const Navbar = () => {
             <button
               onClick={() => handleLanguageChange('it')}
               className={`${
-                language === 'it' ? 'font-bold text-amber-200' : 'text-white opacity-70'
-              } hover:text-amber-200 transition-colors`}
+                language === 'it' ? 'font-bold text-green-200' : 'text-white opacity-70'
+              } hover:text-green-200 transition-colors`}
             >
               IT
             </button>
@@ -86,8 +86,8 @@ const Navbar = () => {
             <button
               onClick={() => handleLanguageChange('en')}
               className={`${
-                language === 'en' ? 'font-bold text-amber-200' : 'text-white opacity-70'
-              } hover:text-amber-200 transition-colors`}
+                language === 'en' ? 'font-bold text-green-200' : 'text-white opacity-70'
+              } hover:text-green-200 transition-colors`}
             >
               EN
             </button>
@@ -110,7 +110,7 @@ const Navbar = () => {
 
       {/* Menu mobile con classe nav-link */}
       {isMenuOpen && (
-        <div className="md:hidden bg-amber-900 shadow-lg">
+        <div className="md:hidden bg-[rgb(57,109,59)] shadow-lg">
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link 
@@ -118,8 +118,8 @@ const Navbar = () => {
                 to={link.path} 
                 className={`nav-link text-lg ${
                   location.pathname === link.path 
-                    ? 'text-amber-200 font-semibold' 
-                    : 'text-white hover:text-amber-200'
+                    ? 'text-green-200 font-semibold' 
+                    : 'text-white hover:text-green-200'
                 }`}
                 onClick={toggleMenu}
               >
@@ -133,7 +133,7 @@ const Navbar = () => {
                   toggleMenu();
                 }}
                 className={`${
-                  language === 'it' ? 'font-bold text-amber-200' : 'text-white'
+                  language === 'it' ? 'font-bold text-green-200' : 'text-white'
                 }`}
               >
                 Italiano
@@ -144,7 +144,7 @@ const Navbar = () => {
                   toggleMenu();
                 }}
                 className={`${
-                  language === 'en' ? 'font-bold text-amber-200' : 'text-white'
+                  language === 'en' ? 'font-bold text-green-200' : 'text-white'
                 }`}
               >
                 English
