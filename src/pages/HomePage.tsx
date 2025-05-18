@@ -5,7 +5,9 @@ import { useLanguage } from '../contexts/LanguageContext';
 import Section from '../components/ui/Section';
 import Button from '../components/ui/Button';
 import MapComponent from '../components/ui/MapComponent';
+import ImageCarousel from '../components/ui/ImageCarousel';
 import { beers } from '../data/beers';
+import { breweryCarouselImages } from '../data/images';
 
 const HomePage = () => {
   const { t, language } = useLanguage();
@@ -26,9 +28,12 @@ const HomePage = () => {
       </Helmet>
       
       {/* Hero Section */}
-      <section className="relative h-screen bg-hero-pattern bg-cover bg-center">
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative h-full flex flex-col items-center justify-center text-white px-4 text-center">
+      <section className="relative h-screen">
+        <div className="absolute inset-0 z-0">
+          <ImageCarousel images={breweryCarouselImages} interval={6000} />
+        </div>
+        <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        <div className="relative h-full flex flex-col items-center justify-center text-white px-4 text-center z-20">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,18 +122,20 @@ const HomePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
-                className={`h-80 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl ${beer.color}`}
+                className={`h-80 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl relative`}
               >
-                <div className="h-56 overflow-hidden">
+                <div className={`absolute inset-0 ${beer.color} opacity-90 transition-opacity duration-300 group-hover:opacity-95`}></div>
+                <div className="h-56 overflow-hidden relative">
                   <img
                     src={beer.imageSrc}
                     alt={t(beer.nameKey)}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
-                <div className="p-4 text-center">
-                  <h3 className="font-serif text-xl font-bold mb-1">{t(beer.nameKey)}</h3>
-                  <p className="text-neutral-600 text-sm">{t(beer.typeKey)}</p>
+                <div className="p-4 text-center relative">
+                  <h3 className="font-brand text-xl font-bold mb-1 text-white">{t(beer.nameKey)}</h3>
+                  <p className="text-white text-sm">{t(beer.typeKey)}</p>
                 </div>
               </motion.div>
             </Link>

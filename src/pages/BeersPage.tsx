@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import Section from '../components/ui/Section';
 import BeerCard from '../components/ui/BeerCard';
 import { beers } from '../data/beers';
+import { salvanGallery, mazzolesaGallery, canalataGallery, cambraGallery } from '../data/galleryImages';
 
 const BeersPage = () => {
   const { t, language } = useLanguage();
@@ -47,20 +48,54 @@ const BeersPage = () => {
       {/* Beers Section */}
       <Section title={t('beers.title')} className="bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {beers.map((beer) => (
-            <BeerCard
-              key={beer.id}
-              id={beer.id}
-              name={t(beer.nameKey)}
-              type={t(beer.typeKey)}
-              description={t(beer.descriptionKey)}
-              tasting={t(beer.tastingKey)}
-              abv={t(beer.abvKey)}
-              ibu={t(beer.ibuKey)}
-              imageSrc={beer.imageSrc}
-              color={beer.color}
-            />
-          ))}
+          <BeerCard
+            id="salvan"
+            name={t('beer.salvan.name')}
+            type={t('beer.salvan.type')}
+            description={t('beer.salvan.description')}
+            tasting={t('beer.salvan.tasting')}
+            abv={t('beer.salvan.abv')}
+            ibu={t('beer.salvan.ibu')}
+            imageSrc={beers[0].imageSrc}
+            color={beers[0].color}
+            gallery={salvanGallery}
+          />
+          <BeerCard
+            id="mazzolesa"
+            name={t('beer.mazzolesa.name')}
+            type={t('beer.mazzolesa.type')}
+            description={t('beer.mazzolesa.description')}
+            tasting={t('beer.mazzolesa.tasting')}
+            abv={t('beer.mazzolesa.abv')}
+            ibu={t('beer.mazzolesa.ibu')}
+            imageSrc={beers[1].imageSrc}
+            color={beers[1].color}
+            gallery={mazzolesaGallery}
+          />
+          <BeerCard
+            id="canalata"
+            name={t('beer.canalata.name')}
+            type={t('beer.canalata.type')}
+            description={t('beer.canalata.description')}
+            tasting={t('beer.canalata.tasting')}
+            abv={t('beer.canalata.abv')}
+            ibu={t('beer.canalata.ibu')}
+            imageSrc={beers[2].imageSrc}
+            color={beers[2].color}
+            gallery={canalataGallery}
+          />
+          <BeerCard
+            id="cambra"
+            name={t('beer.cambra.name')}
+            type={t('beer.cambra.type')}
+            description={t('beer.cambra.description')}
+            tasting={t('beer.cambra.tasting')}
+            abv={t('beer.cambra.abv')}
+            ibu={t('beer.cambra.ibu')}
+            imageSrc={beers[3].imageSrc}
+            color={beers[3].color}
+            gallery={cambraGallery}
+          />
         </div>
       </Section>
     </>

@@ -1,3 +1,5 @@
+import { beerImages } from './images';
+
 export interface Beer {
   id: string;
   nameKey: string;
@@ -19,7 +21,7 @@ export const beers: Beer[] = [
     tastingKey: 'beer.salvan.tasting',
     abvKey: 'beer.salvan.abv',
     ibuKey: 'beer.salvan.ibu',
-    imageSrc: 'https://images.pexels.com/photos/1282248/pexels-photo-1282248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    imageSrc: beerImages.salvan.primary,
     color: 'bg-[rgb(141,69,59)]',
   },
   {
@@ -30,7 +32,7 @@ export const beers: Beer[] = [
     tastingKey: 'beer.mazzolesa.tasting',
     abvKey: 'beer.mazzolesa.abv',
     ibuKey: 'beer.mazzolesa.ibu',
-    imageSrc: 'https://images.pexels.com/photos/1089931/pexels-photo-1089931.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    imageSrc: beerImages.mazzolesa.primary,
     color: 'bg-[rgb(114,179,128)]',
   },
   {
@@ -41,7 +43,7 @@ export const beers: Beer[] = [
     tastingKey: 'beer.canalata.tasting',
     abvKey: 'beer.canalata.abv',
     ibuKey: 'beer.canalata.ibu',
-    imageSrc: 'https://images.pexels.com/photos/1269043/pexels-photo-1269043.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    imageSrc: beerImages.canalata.primary,
     color: 'bg-[rgb(234,198,87)]',
   },
   {
@@ -52,7 +54,7 @@ export const beers: Beer[] = [
     tastingKey: 'beer.cambra.tasting',
     abvKey: 'beer.cambra.abv',
     ibuKey: 'beer.cambra.ibu',
-    imageSrc: 'https://images.pexels.com/photos/5530314/pexels-photo-5530314.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    imageSrc: beerImages.cambra.primary,
     color: 'bg-[rgb(214,119,69)]',
   },
 ];
