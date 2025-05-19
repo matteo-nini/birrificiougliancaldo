@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100" height="800" viewBox="0 0 100 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="diagonalHatch" width="10" height="10" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="10" style="stroke:#396d3b; stroke-width:2" />
+    </pattern>
+  </defs>
+  <rect width="100" height="800" fill="#396d3b" opacity="0.1" />
+  <rect width="100" height="800" fill="url(#diagonalHatch)" opacity="0.15" />
+  <path d="M0,0 Q50,400 0,800" fill="none" stroke="#396d3b" stroke-width="1" opacity="0.3" />
+  <path d="M100,0 Q50,400 100,800" fill="none" stroke="#396d3b" stroke-width="1" opacity="0.3" />
+</svg>

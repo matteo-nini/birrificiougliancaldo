@@ -28,39 +28,74 @@ const HomePage = () => {
       </Helmet>
       
       {/* Hero Section */}
-      <section className="relative h-screen">
-        <div className="absolute inset-0 z-0">
-          <ImageCarousel images={breweryCarouselImages} interval={6000} />
+      <section className="relative min-h-screen flex flex-col md:flex-row">
+        {/* Sezione sinistra con logo e CTA */}
+        <div className="w-full md:w-1/2 flex flex-col items-center justify-center bg-white py-16 md:py-0 px-6 md:px-12 z-20">
+          <div className="max-w-md mx-auto text-center md:text-left">
+            <motion.img 
+              src="/logo-birrificio-ugliancaldo.png"
+              alt="Logo Birrificio Ugliancaldo"
+              className="h-32 md:h-48 mx-auto md:mx-0 mb-6"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            />
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="font-brand text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-neutral-900"
+            >
+              Birrificio Ugliancaldo
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="font-brand text-lg md:text-xl mb-8 text-neutral-700"
+            >
+              Birre artigianali dal cuore delle Alpi Apuane
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <Button to="/beers" size="lg" variant="primary" className="font-brand text-lg">
+                Scopri le nostre birre
+              </Button>
+            </motion.div>
+          </div>
         </div>
-        <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
-        <div className="relative h-full flex flex-col items-center justify-center text-white px-4 text-center z-20">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="font-brand text-4xl md:text-6xl lg:text-7xl font-bold mb-4 max-w-4xl"
-          >
-            Birrificio Ugliancaldo
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-brand text-xl md:text-2xl mb-8 max-w-2xl"
-          >
-            Birre artigianali dal cuore delle Alpi Apuane
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <Button to="/beers" size="lg" variant="primary" className="font-brand text-lg">
-              Scopri le nostre birre
-            </Button>
-          </motion.div>
+
+        {/* Texture divisoria per desktop */}
+        <div className="hidden md:block absolute left-1/2 top-0 h-full w-8 z-30 transform -translate-x-1/2">
+          <img 
+            src="/textures/divider-texture.svg" 
+            alt="" 
+            className="h-full w-full object-cover opacity-90"
+          />
         </div>
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+
+        {/* Texture divisoria per mobile - divisore orizzontale */}
+        <div className="md:hidden w-full h-8 relative z-30 overflow-hidden">
+          <img 
+            src="/textures/divider-texture.svg" 
+            alt="" 
+            className="w-full h-full object-cover opacity-90 rotate-90"
+          />
+        </div>
+
+        {/* Sezione destra con carosello */}
+        <div className="w-full md:w-1/2 relative z-20">
+          <div className="h-[50vh] md:h-screen relative overflow-hidden">
+            <ImageCarousel images={breweryCarouselImages} interval={6000} />
+            <div className="absolute inset-0 bg-black bg-opacity-25"></div>
+          </div>
+        </div>
+        
+        {/* Pulsante per scorrere verso il basso */}
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center z-30">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -69,7 +104,7 @@ const HomePage = () => {
           >
             <a
               href="#intro"
-              className="inline-block text-white p-2 rounded-full border-2 border-white hover:bg-white hover:text-neutral-900 transition-colors duration-300"
+              className="inline-block text-white p-2 rounded-full border-2 border-white hover:bg-white hover:text-neutral-900 transition-colors duration-300 bg-[rgb(57,109,59)]/50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
